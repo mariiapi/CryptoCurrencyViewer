@@ -5,11 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.cryptocurrencyviewer"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.cryptocurrencyviewer"
         minSdk = 27
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
