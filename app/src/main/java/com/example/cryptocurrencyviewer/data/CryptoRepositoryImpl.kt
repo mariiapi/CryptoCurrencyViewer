@@ -5,8 +5,9 @@ import com.example.cryptocurrencyviewer.domain.CryptoRepository
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import javax.inject.Inject
 
-class CryptoRepositoryImpl(private val apiService: CryptoApiService) : CryptoRepository {
+class CryptoRepositoryImpl @Inject constructor(private val apiService: CryptoApiService) : CryptoRepository {
     override suspend fun getTopCryptos(): Result<List<CryptoItem>> {
         return try {
             val response = apiService.getTopCryptos()
