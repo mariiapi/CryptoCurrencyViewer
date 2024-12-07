@@ -2,55 +2,46 @@ package com.example.cryptocurrencyviewer.presentation
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.example.cryptocurrencyviewer.data.CryptoRepositoryImpl
-import com.example.cryptocurrencyviewer.data.RetrofitClient
-import com.example.cryptocurrencyviewer.domain.CryptoItem
-import com.example.cryptocurrencyviewer.domain.usecases.GetCryptoPricesUseCase
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val apiService = RetrofitClient.instance
-    private val repository = CryptoRepositoryImpl(apiService)
-    private val useCase = GetCryptoPricesUseCase(repository)
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        lifecycleScope.launch {
-            try {
-                Log.d(TAG, "Loading...")
-                val result = useCase()
-                result.fold(
-                    onSuccess = { data ->
-                        Log.d(TAG, "Success:")
-                        logCryptoData(data)
-                    },
-                    onFailure = { exception ->
-                        Log.e(TAG, "Error: ${exception.message}")
+        viewModel.state.observe(this) { state ->
+            when (state) {
+                is MainViewModel.State.Loading -> {
+                    Log.d(TAG, "Loading...")
+                }
+
+                is MainViewModel.State.Success -> {
+                    Log.d(TAG, "Success:")
+                    state.data.forEach {
+                        Log.d(
+                            TAG, """
+                            Name: ${it.name}
+                            Exchange Rate: USD ${it.exchangeRate}
+                            Last Update: ${it.lastUpdate}
+                            24h Min: USD ${it.min24h ?: "N/A"}
+                            24h Max: USD ${it.max24h ?: "N/A"}
+                            """.trimIndent()
+                        )
                     }
-                )
-            } catch (e: Exception) {
-                Log.e(TAG, "Error: ${e.message}")
+                }
+
+                is MainViewModel.State.Error -> {
+                    Log.e(TAG, "Error: ${state.message}")
+                }
             }
         }
     }
 
-    private fun logCryptoData(data: List<CryptoItem>) {
-        data.forEach {
-            Log.d(
-                TAG, """
-                Name: ${it.name}
-                Exchange Rate: USD ${it.exchangeRate}
-                Last Update: ${it.lastUpdate}
-                24h Min: USD ${it.min24h ?: "N/A"}
-                24h Max: USD ${it.max24h ?: "N/A"}
-                """.trimIndent()
-            )
-        }
-    }
 
     companion object {
         const val TAG = "XXXX"
