@@ -1,5 +1,5 @@
 package com.example.cryptocurrencyviewer.domain
 
 interface CryptoRepository {
-    suspend fun getAllCryptoPrices(): List<CryptoItem>
+    suspend fun getTopCryptos(): Result<List<CryptoItem>>
 }

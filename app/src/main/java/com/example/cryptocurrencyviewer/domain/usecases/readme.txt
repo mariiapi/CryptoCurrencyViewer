@@ -1,5 +1,3 @@
 Use cases
 
-1. Fetch crypto currency data
-2. Update crypto currency data
-3. Get crypto details
+1. Get Crypto Prices and all other details
