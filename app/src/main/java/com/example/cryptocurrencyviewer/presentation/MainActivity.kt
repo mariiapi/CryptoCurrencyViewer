@@ -3,44 +3,56 @@ package com.example.cryptocurrencyviewer.presentation
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cryptocurrencyviewer.data.CryptoApiService
+import androidx.lifecycle.lifecycleScope
 import com.example.cryptocurrencyviewer.data.CryptoRepositoryImpl
-import com.example.cryptocurrencyviewer.databinding.ActivityMainBinding
-import com.example.cryptocurrencyviewer.domain.GetCryptoPricesUseCase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.cryptocurrencyviewer.data.RetrofitClient
+import com.example.cryptocurrencyviewer.domain.CryptoItem
+import com.example.cryptocurrencyviewer.domain.usecases.GetCryptoPricesUseCase
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val apiService = RetrofitClient.instance
+    private val repository = CryptoRepositoryImpl(apiService)
+    private val useCase = GetCryptoPricesUseCase(repository)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            runMainLogic()
+        lifecycleScope.launch {
+            try {
+                Log.d(TAG, "Loading...")
+                val result = useCase()
+                result.fold(
+                    onSuccess = { data ->
+                        Log.d(TAG, "Success:")
+                        logCryptoData(data)
+                    },
+                    onFailure = { exception ->
+                        Log.e(TAG, "Error: ${exception.message}")
+                    }
+                )
+            } catch (e: Exception) {
+                Log.e(TAG, "Error: ${e.message}")
+            }
         }
-
     }
 
-    private suspend fun runMainLogic(){
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://min-api.cryptocompare.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val apiService = retrofit.create(CryptoApiService::class.java)
-        val repository = CryptoRepositoryImpl(apiService)
-        val useCase = GetCryptoPricesUseCase(repository)
-        val cryptoPrices = useCase()
-        Log.d(TAG, "runMainLogic: $cryptoPrices")
+    private fun logCryptoData(data: List<CryptoItem>) {
+        data.forEach {
+            Log.d(
+                TAG, """
+                Name: ${it.name}
+                Exchange Rate: USD ${it.exchangeRate}
+                Last Update: ${it.lastUpdate}
+                24h Min: USD ${it.min24h ?: "N/A"}
+                24h Max: USD ${it.max24h ?: "N/A"}
+                """.trimIndent()
+            )
+        }
     }
 
-    companion object{
-        const val TAG = "XXX"
+    companion object {
+        const val TAG = "XXXX"
     }
 }
