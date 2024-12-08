@@ -12,5 +12,6 @@
             android:layout_height="match_parent"
             tools:layout_editor_absoluteY="1dp"
             tools:layout_editor_absoluteX="1dp"
-            tools:listitem="@layout/crypto_item" />
+            tools:listitem="@layout/crypto_item"
+            android:id="@+id/rvCryptoList" />
 </androidx.constraintlayout.widget.ConstraintLayout>
