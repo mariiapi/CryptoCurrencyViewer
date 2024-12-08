@@ -1,18 +1,38 @@
 package com.example.cryptocurrencyviewer.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cryptocurrencyviewer.R
+import com.example.cryptocurrencyviewer.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private val binding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
     private val viewModel: MainViewModel by viewModels()
 
+    @SuppressLint("CommitTransaction")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setContentView(binding.root)
+
+
+        val frag1 = DetailsFragment()
+        val frag2 = RVFragment()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainerView, frag1)
+            commit()
+        }
+
 
         viewModel.state.observe(this) { state ->
             when (state) {

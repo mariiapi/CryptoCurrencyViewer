@@ -6,7 +6,7 @@
         android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/cardView_shopItem"
+            android:id="@+id/cardView_cryptoItem"
             android:layout_width="match_parent"
             android:layout_height="203dp"
             android:layout_margin="4dp"
