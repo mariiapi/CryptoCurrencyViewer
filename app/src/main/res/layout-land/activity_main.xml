@@ -11,8 +11,8 @@
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.5"
             android:layout_height="match_parent"
-            android:name="com.example.cryptocurrencyviewer.presentation.RVFragment"
             android:id="@+id/fragment0"
+            android:name="com.example.cryptocurrencyviewer.presentation.RVFragment"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -21,7 +21,6 @@
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.5"
             android:layout_height="match_parent"
-            android:name="com.example.cryptocurrencyviewer.presentation.DetailsFragment"
             android:id="@+id/fragment1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

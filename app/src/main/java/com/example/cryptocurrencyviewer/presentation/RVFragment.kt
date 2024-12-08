@@ -1,5 +1,6 @@
 package com.example.cryptocurrencyviewer.presentation
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,4 +36,5 @@ class RVFragment : Fragment() {
 
         return view
     }
+
 }

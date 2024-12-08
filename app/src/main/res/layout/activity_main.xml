@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/fragmentContainerView"
+            android:name="com.example.cryptocurrencyviewer.presentation.RVFragment"
             tools:layout_editor_absoluteY="82dp"
             tools:layout_editor_absoluteX="37dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

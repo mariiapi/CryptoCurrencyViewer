@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptocurrencyviewer.R
 import com.example.cryptocurrencyviewer.databinding.ActivityMainBinding
 import com.example.cryptocurrencyviewer.domain.CryptoItem
@@ -54,21 +53,22 @@ class MainActivity : AppCompatActivity(), OnCryptoItemClickListener {
 //            }
 //        }
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView, RVFragment())
-                .commit()
-        }
+
     }
 
     override fun onClick(cryptoItem: CryptoItem) {
         val detailsFragment = DetailsFragment.newInstance(cryptoItem)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView, detailsFragment)
-            .addToBackStack(null)
-            .commit()
+        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, detailsFragment)
+                .addToBackStack(null)
+                .commit()
+        } else {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment1, detailsFragment)
+                .commit()
+        }
     }
-
 
     companion object {
         const val TAG = "XXXX"
