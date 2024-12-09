@@ -3,8 +3,9 @@ package com.example.cryptocurrencyviewer.data.db
 import android.content.Context
 import com.example.cryptocurrencyviewer.domain.CryptoItem
 import com.example.cryptocurrencyviewer.domain.CryptoRepository
+import javax.inject.Inject
 
-class RepositoryDataBase(context: Context) : CryptoRepository {
+class RepositoryDataBase @Inject constructor(context: Context) : CryptoRepository {
 
     private val dao = CryptoRoomDataBase.getDatabase(context).cryptoDao()
 
