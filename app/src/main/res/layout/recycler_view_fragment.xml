@@ -5,13 +5,15 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.MainActivity">
+        tools:context=".presentation.MainActivity"
+        android:background="@color/background"
+        >
 
-    <androidx.fragment.app.FragmentContainerView
+    <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/fragmentContainerView"
-            android:name="com.example.cryptocurrencyviewer.presentation.RVFragment"
-            tools:layout_editor_absoluteY="82dp"
-            tools:layout_editor_absoluteX="37dp" />
+            tools:layout_editor_absoluteY="1dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:listitem="@layout/crypto_item"
+            android:id="@+id/rvCryptoList" />
 </androidx.constraintlayout.widget.ConstraintLayout>

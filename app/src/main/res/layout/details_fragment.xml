@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="@color/background"
+        >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/btn_star"
+                android:id="@+id/imageView3" />
+
+        <TextView
+                android:id="@+id/coinTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CCY1/CCY2"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:textAllCaps="true" />
+
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+            <TableRow>
+
+                <TextView
+                        android:layout_width="169dp"
+                        android:layout_height="wrap_content"
+                        android:text="Coin price:"
+                        android:textSize="@dimen/little_text_size"
+                        android:textColor="@android:color/black"
+                        android:textAlignment="textEnd"
+                        />
+
+                <TextView
+                        android:id="@+id/coinPrice"
+                        android:layout_width="203dp"
+                        android:layout_height="wrap_content"
+                        android:text="00.00"
+                        android:textSize="@dimen/little_text_size"
+                        android:textColor="@android:color/black"
+                        android:layout_marginStart="8dp"
+                        android:textAlignment="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Min 24 hours:"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/little_text_size"
+                        android:textAlignment="textEnd" />
+
+                <TextView
+                        android:id="@+id/min24Hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00.00"
+                        android:textSize="@dimen/little_text_size"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textAlignment="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Max 24 hours:"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/little_text_size"
+                        android:textAlignment="textEnd" />
+
+                <TextView
+                        android:id="@+id/max24Hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00.00"
+                        android:textSize="@dimen/little_text_size"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@android:color/holo_green_light"
+                        android:textAlignment="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last update:"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/little_text_size"
+                        android:textAlignment="textEnd" />
+
+                <TextView
+                        android:id="@+id/lastUpdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="00:00:00"
+                        android:textSize="@dimen/little_text_size"
+                        android:layout_marginStart="8dp"
+                        android:textAlignment="center" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>
