@@ -40,7 +40,6 @@ android {
     viewBinding {
         enable = true
     }
-
 }
 
 dependencies {
@@ -50,16 +49,24 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.fragment.ktx)
+
+    // Room components
+    implementation ("androidx.room:room-ktx:$2.6.1")
+    androidTestImplementation("androidx.room:room-testing:$2.6.1")
+
 
 }
 
