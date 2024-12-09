@@ -1,5 +1,7 @@
 package com.example.cryptocurrencyviewer.domain
 
+import java.io.Serializable
+
 //import java.io.Serializable
 
 data class CryptoItem(
@@ -9,3 +11,4 @@ data class CryptoItem(
     val min24h: Double?,
     val max24h: Double?
 ) //: Serializable
+    : Serializable

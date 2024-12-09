@@ -24,7 +24,7 @@ class CryptoRepositoryImpl @Inject constructor(private val apiService: CryptoApi
                 exchangeRate = cryptoData.display.usd.price.removePrefix("$").trim().replace(",", "").toDoubleOrNull() ?: 0.0,
                 lastUpdate = formatTimestamp(cryptoData.display.usd.lastUpdate),
                 min24h = parseToDoubleOrNull(cryptoData.display.usd.low24h),
-                max24h = parseToDoubleOrNull(cryptoData.display.usd.high24h)
+                max24h = parseToDoubleOrNull(cryptoData.display.usd.high24h),
             )
         }
     }
