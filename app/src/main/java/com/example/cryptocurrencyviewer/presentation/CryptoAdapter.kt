@@ -51,4 +51,9 @@ class CryptoAdapter(
 
     override fun getItemCount() = currencies.size
 
+    fun setData(newData: List<CryptoItem>) {
+        currencies.clear()
+        currencies.addAll(newData)
+        notifyDataSetChanged()
+    }
 }
