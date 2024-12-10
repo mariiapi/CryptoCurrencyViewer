@@ -27,11 +27,11 @@ class CryptoAdapter(
         val currency: TextView = view.findViewById<TextView>(R.id.tvCurrency)
         val exchange: TextView = view.findViewById<TextView>(R.id.tvExchangeValue)
         val lastUpdate: TextView = view.findViewById<TextView>(R.id.tvUpdate)
-        val imageView: ImageView = view.findViewById(R.id.ivCurrency)
+        val imageView: ImageView = view.findViewById<ImageView>(R.id.ivCurrency)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        
+
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.crypto_item, viewGroup, false)
 
@@ -58,4 +58,9 @@ class CryptoAdapter(
 
     override fun getItemCount() = currencies.size
 
+    fun setData(newData: List<CryptoItem>) {
+        currencies.clear()
+        currencies.addAll(newData)
+        notifyDataSetChanged()
+    }
 }

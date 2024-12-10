@@ -27,15 +27,10 @@ class RVFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.recycler_view_fragment, container, false)
 
-        val lst = mutableListOf(
-            CryptoItem("Bitcoin", 48500.0, "2024-12-08 14:00", 47000.0, 49000.0, "/media/37746251/btc.png"),
-            CryptoItem("Ripple", 1.2, "2024-12-08 14:00", 1.1, 1.3, ""),
-            CryptoItem("Ethereum", 3200.0, "2024-12-08 14:00", 3100.0, 3300.0, "")
-        )
-
         recyclerView = view.findViewById(R.id.rvCryptoList)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = CryptoAdapter(lst, object : OnCryptoItemClickListener {
+
+        adapter = CryptoAdapter(mutableListOf(), object : OnCryptoItemClickListener {
             override fun onClick(cryptoItem: CryptoItem) {
                 viewModel.selectCryptoItem(cryptoItem)
 
@@ -43,9 +38,29 @@ class RVFragment : Fragment() {
                 findNavController().navigate(action)
             }
         })
-
         recyclerView.adapter = adapter
+
+        observeViewModel()
 
         return view
     }
+
+    private fun observeViewModel() {
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            val TAG = "XXXX"
+            when (state) {
+                is MainViewModel.State.Success -> {
+                    // Update the RecyclerView with new data
+                    adapter.setData(state.data)
+                }
+
+                is MainViewModel.State.Error -> Log.d(TAG, "observeViewModel: error")
+                MainViewModel.State.Loading -> Log.d(TAG, "observeViewModel: loading...")
+            }
+        }
+    }
+
 }
+
+
+

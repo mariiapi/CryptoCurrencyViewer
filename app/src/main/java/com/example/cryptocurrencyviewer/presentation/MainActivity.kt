@@ -25,6 +25,13 @@ class MainActivity : AppCompatActivity(), OnCryptoItemClickListener {
         super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, RVFragment())
+                .commit()
+        }
+
     }
 
     override fun onClick(cryptoItem: CryptoItem) {
@@ -38,11 +45,5 @@ class MainActivity : AppCompatActivity(), OnCryptoItemClickListener {
                 .replace(R.id.fragment1, DetailsFragment())
                 .commit()
         }
-    }
-
-
-
-    companion object {
-        const val TAG = "XXXX"
     }
 }
