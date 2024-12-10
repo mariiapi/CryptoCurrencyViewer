@@ -25,7 +25,13 @@ class MainActivity : AppCompatActivity(), OnCryptoItemClickListener {
 
         setContentView(binding.root)
 
+        binding.main.setOnRefreshListener {
+            viewModel.refreshData()
+        }
 
+        viewModel.isRefreshing.observe(this) { isRefreshing ->
+            binding.main.isRefreshing = isRefreshing
+        }
     }
 
     override fun onClick(cryptoItem: CryptoItem) {

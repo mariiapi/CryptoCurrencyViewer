@@ -43,9 +43,13 @@ class RVFragment : Fragment() {
                 is MainViewModel.State.Success -> {
                     // Update the RecyclerView with new data
                     adapter.setData(state.data)
+                    viewModel.setRefreshing(false)
                 }
 
-                is MainViewModel.State.Error -> Log.d(TAG, "observeViewModel: error")
+                is MainViewModel.State.Error -> {
+                    Log.d(TAG, "observeViewModel: error")
+                    viewModel.setRefreshing(false)
+                }
                 MainViewModel.State.Loading -> Log.d(TAG, "observeViewModel: loading...")
             }
         }

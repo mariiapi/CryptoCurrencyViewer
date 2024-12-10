@@ -18,6 +18,13 @@ class MainViewModel @Inject constructor(
     private val _state = MutableLiveData<State>(State.Loading)
     val state: LiveData<State> = _state
 
+    private val _isRefreshing = MutableLiveData<Boolean>(false)
+    val isRefreshing: LiveData<Boolean> = _isRefreshing
+
+    fun setRefreshing(refreshing: Boolean) {
+        _isRefreshing.value = refreshing
+    }
+
     init {
         loadData()
     }
@@ -35,6 +42,11 @@ class MainViewModel @Inject constructor(
             )
         }
     }
+
+    fun refreshData() {
+        loadData()
+    }
+
 
     sealed class State {
         data object Loading : State()
