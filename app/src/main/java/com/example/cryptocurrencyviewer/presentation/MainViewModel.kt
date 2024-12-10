@@ -18,6 +18,13 @@ class MainViewModel @Inject constructor(
     private val _state = MutableLiveData<State>(State.Loading)
     val state: LiveData<State> = _state
 
+    private val _selectedCryptoItem = MutableLiveData<CryptoItem>()
+    val selectedCryptoItem: LiveData<CryptoItem> get() = _selectedCryptoItem
+
+    fun selectCryptoItem(item: CryptoItem) {
+        _selectedCryptoItem.value = item
+    }
+
     init {
         loadData()
     }
