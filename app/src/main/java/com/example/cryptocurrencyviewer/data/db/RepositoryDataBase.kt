@@ -20,6 +20,8 @@ class RepositoryDataBase @Inject constructor(context: Context) : CryptoRepositor
     }
 
     suspend fun insertCryptos(cryptoItems: List<CryptoItem>) {
+        dao.clearAllCryptos()
+
         val cryptoEntities = cryptoItems.map { it.toCryptoEntity() }
         dao.insertAll(cryptoEntities)
     }

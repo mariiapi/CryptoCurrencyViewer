@@ -11,4 +11,7 @@ interface DaoCryptoItem {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(cryptoEntities: List<CryptoEntity>)
+
+    @Query("DELETE FROM cryptoListTable")
+    suspend fun clearAllCryptos()
 }

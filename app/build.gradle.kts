@@ -56,6 +56,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.room.common)
+    implementation(libs.androidx.swiperefreshlayout)
     kapt(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
