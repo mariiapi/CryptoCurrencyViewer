@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptocurrencyviewer.R
-import com.example.cryptocurrencyviewer.domain.CryptoItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
