@@ -12,10 +12,15 @@ class RepositoryDataBase @Inject constructor(context: Context) : CryptoRepositor
     override suspend fun getTopCryptos(): Result<List<CryptoItem>> {
         return try {
             val cryptoEntities = dao.getTopCryptos()
-            val cryptoItems = cryptoEntities.getOrThrow().map { it.toCryptoItem() }
+            val cryptoItems = cryptoEntities.map { it.toCryptoItem() }
             Result.success(cryptoItems)
         } catch (exception: Exception) {
             Result.failure(exception)
         }
+    }
+
+    suspend fun insertCryptos(cryptoItems: List<CryptoItem>) {
+        val cryptoEntities = cryptoItems.map { it.toCryptoEntity() }
+        dao.insertAll(cryptoEntities)
     }
 }

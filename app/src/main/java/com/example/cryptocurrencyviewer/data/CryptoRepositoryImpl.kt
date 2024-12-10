@@ -1,5 +1,8 @@
 package com.example.cryptocurrencyviewer.data
 
+import com.example.cryptocurrencyviewer.data.api.CryptoApiService
+import com.example.cryptocurrencyviewer.data.api.CryptoResponse
+import com.example.cryptocurrencyviewer.data.db.RepositoryDataBase
 import com.example.cryptocurrencyviewer.domain.CryptoItem
 import com.example.cryptocurrencyviewer.domain.CryptoRepository
 import java.text.SimpleDateFormat
@@ -7,13 +10,19 @@ import java.util.Date
 import java.util.Locale
 import javax.inject.Inject
 
-class CryptoRepositoryImpl @Inject constructor(private val apiService: CryptoApiService) : CryptoRepository {
+class CryptoRepositoryImpl @Inject constructor(
+    private val apiService: CryptoApiService,
+    private val dbRepository: RepositoryDataBase
+) : CryptoRepository {
     override suspend fun getTopCryptos(): Result<List<CryptoItem>> {
         return try {
             val response = apiService.getTopCryptos()
-            Result.success(response.toDomain())
+            val domainData = response.toDomain()
+            dbRepository.insertCryptos(domainData)
+            dbRepository.getTopCryptos()
         } catch (e: Exception) {
-            Result.failure(e)
+            // If API call fails, attempt to get data from the database
+            dbRepository.getTopCryptos()
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.cryptocurrencyviewer.data
+package com.example.cryptocurrencyviewer.data.api
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
