@@ -65,8 +65,11 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
 
     // Room components
-    implementation ("androidx.room:room-ktx:$2.6.1")
-    androidTestImplementation("androidx.room:room-testing:$2.6.1")
+//    implementation ("androidx.room:room-ktx:$2.6.1")
+//    androidTestImplementation("androidx.room:room-testing:$2.6.1")
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
 
 }
