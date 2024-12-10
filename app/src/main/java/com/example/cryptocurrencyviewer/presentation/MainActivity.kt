@@ -25,35 +25,6 @@ class MainActivity : AppCompatActivity(), OnCryptoItemClickListener {
         super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
-
-//        viewModel.state.observe(this) { state ->
-//            when (state) {
-//                is MainViewModel.State.Loading -> {
-//                    Log.d(TAG, "Loading...")
-//                }
-//
-//                is MainViewModel.State.Success -> {
-//                    Log.d(TAG, "Success:")
-//                    state.data.forEach {
-//                        Log.d(
-//                            TAG, """
-//                            Name: ${it.name}
-//                            Exchange Rate: USD ${it.exchangeRate}
-//                            Last Update: ${it.lastUpdate}
-//                            24h Min: USD ${it.min24h ?: "N/A"}
-//                            24h Max: USD ${it.max24h ?: "N/A"}
-//                            """.trimIndent()
-//                        )
-//                    }
-//                }
-//
-//                is MainViewModel.State.Error -> {
-//                    Log.e(TAG, "Error: ${state.message}")
-//                }
-//            }
-//        }
-
-
     }
 
     override fun onClick(cryptoItem: CryptoItem) {
@@ -68,6 +39,8 @@ class MainActivity : AppCompatActivity(), OnCryptoItemClickListener {
                 .commit()
         }
     }
+
+
 
     companion object {
         const val TAG = "XXXX"

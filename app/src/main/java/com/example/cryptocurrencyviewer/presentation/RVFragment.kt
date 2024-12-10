@@ -28,9 +28,9 @@ class RVFragment : Fragment() {
         val view = inflater.inflate(R.layout.recycler_view_fragment, container, false)
 
         val lst = mutableListOf(
-            CryptoItem("Bitcoin", 48500.0, "2024-12-08 14:00", 47000.0, 49000.0),
-            CryptoItem("Ripple", 1.2, "2024-12-08 14:00", 1.1, 1.3),
-            CryptoItem("Ethereum", 3200.0, "2024-12-08 14:00", 3100.0, 3300.0)
+            CryptoItem("Bitcoin", 48500.0, "2024-12-08 14:00", 47000.0, 49000.0, "/media/37746251/btc.png"),
+            CryptoItem("Ripple", 1.2, "2024-12-08 14:00", 1.1, 1.3, ""),
+            CryptoItem("Ethereum", 3200.0, "2024-12-08 14:00", 3100.0, 3300.0, "")
         )
 
         recyclerView = view.findViewById(R.id.rvCryptoList)
@@ -39,7 +39,6 @@ class RVFragment : Fragment() {
             override fun onClick(cryptoItem: CryptoItem) {
                 viewModel.selectCryptoItem(cryptoItem)
 
-                // Navigate to details fragment using NavController
                 val action = RVFragmentDirections.actionRVFragmentToDetailsFragment()
                 findNavController().navigate(action)
             }

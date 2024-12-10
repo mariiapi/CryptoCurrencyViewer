@@ -8,6 +8,7 @@ fun CryptoItem.toCryptoEntity() : CryptoEntity {
         exchangeRate = exchangeRate,
         lastUpdate = lastUpdate,
         min24h = min24h,
-        max24h = max24h
+        max24h = max24h,
+        imageURL = imageURL
     )
 }

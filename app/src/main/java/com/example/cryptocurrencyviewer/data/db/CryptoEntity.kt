@@ -19,7 +19,9 @@ data class CryptoEntity (
     @ColumnInfo("min24h_item")
     val min24h: Double?,
     @ColumnInfo("max24h_item")
-    val max24h: Double?
+    val max24h: Double?,
+    @ColumnInfo("image_item")
+    val imageURL: String
 
 ) {
     fun toCryptoItem() : CryptoItem {
@@ -28,7 +30,8 @@ data class CryptoEntity (
             exchangeRate = exchangeRate,
             lastUpdate = lastUpdate,
             min24h = min24h,
-            max24h = max24h
+            max24h = max24h,
+            imageURL = imageURL
         )
     }
 }

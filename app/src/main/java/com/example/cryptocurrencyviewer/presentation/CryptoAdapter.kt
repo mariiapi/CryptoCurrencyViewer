@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptocurrencyviewer.R
 import com.example.cryptocurrencyviewer.domain.CryptoItem
+import com.squareup.picasso.Picasso
 
 interface OnCryptoItemClickListener {
     fun onClick(cryptoItem: CryptoItem)
@@ -25,6 +27,7 @@ class CryptoAdapter(
         val currency: TextView = view.findViewById<TextView>(R.id.tvCurrency)
         val exchange: TextView = view.findViewById<TextView>(R.id.tvExchangeValue)
         val lastUpdate: TextView = view.findViewById<TextView>(R.id.tvUpdate)
+        val imageView: ImageView = view.findViewById(R.id.ivCurrency)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -43,6 +46,10 @@ class CryptoAdapter(
         viewHolder.currency.text = cryptoItem.name
         viewHolder.exchange.text = cryptoItem.exchangeRate.toString()
         viewHolder.lastUpdate.text = cryptoItem.lastUpdate
+
+        Picasso.get()
+            .load("https://www.cryptocompare.com" + cryptoItem.imageURL)
+            .into(viewHolder.imageView)
 
         viewHolder.cardView.setOnClickListener {
             listener.onClick(cryptoItem)

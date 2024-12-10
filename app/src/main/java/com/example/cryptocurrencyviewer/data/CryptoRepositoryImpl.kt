@@ -29,11 +29,12 @@ class CryptoRepositoryImpl @Inject constructor(
     private fun CryptoResponse.toDomain(): List<CryptoItem> {
         return data.map { cryptoData ->
             CryptoItem(
-                name = cryptoData.coinInfo.fullName,
+                name = cryptoData.coinInfo.name,
                 exchangeRate = cryptoData.display.usd.price.removePrefix("$").trim().replace(",", "").toDoubleOrNull() ?: 0.0,
                 lastUpdate = formatTimestamp(cryptoData.display.usd.lastUpdate),
                 min24h = parseToDoubleOrNull(cryptoData.display.usd.low24h),
                 max24h = parseToDoubleOrNull(cryptoData.display.usd.high24h),
+                imageURL = cryptoData.coinInfo.imageURL
             )
         }
     }

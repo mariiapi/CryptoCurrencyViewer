@@ -17,7 +17,8 @@ data class CryptoData(
 )
 
 data class CoinInfo(
-    val fullName: String
+    val name: String,
+    val imageURL: String
 )
 
 data class Display(

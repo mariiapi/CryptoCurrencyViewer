@@ -24,7 +24,8 @@ class CryptoResponseDeserializer : JsonDeserializer<CryptoResponse> {
 
                 if (usdObject != null) {
                     val coinInfo = CoinInfo(
-                        fullName = coinInfoObject.get("FullName").asString
+                        name = coinInfoObject.get("Name").asString,
+                        imageURL = coinInfoObject.get("ImageUrl").asString
                     )
 
                     val usd = Usd(
