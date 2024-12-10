@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".presentation.MainActivity">
 
+    <!-- Left half for RVFragment -->
     <androidx.fragment.app.FragmentContainerView
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.5"
@@ -18,6 +19,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Right half for DetailsFragment (Initially empty) -->
     <androidx.fragment.app.FragmentContainerView
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.5"
@@ -26,6 +28,5 @@
             android:id="@+id/fragment1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
