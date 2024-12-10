@@ -1,4 +1,4 @@
-package com.example.cryptocurrencyviewer.data
+package com.example.cryptocurrencyviewer.data.api
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

@@ -1,7 +1,7 @@
 package com.example.cryptocurrencyviewer.di
 
-import com.example.cryptocurrencyviewer.data.CryptoApiService
-import com.example.cryptocurrencyviewer.data.RetrofitClient
+import com.example.cryptocurrencyviewer.data.api.CryptoApiService
+import com.example.cryptocurrencyviewer.data.api.RetrofitClient
 import com.example.cryptocurrencyviewer.data.CryptoRepositoryImpl
 import com.example.cryptocurrencyviewer.domain.CryptoRepository
 import com.example.cryptocurrencyviewer.domain.usecases.GetCryptoPricesUseCase

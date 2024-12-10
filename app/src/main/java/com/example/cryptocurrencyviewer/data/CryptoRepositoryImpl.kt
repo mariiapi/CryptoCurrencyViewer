@@ -1,5 +1,7 @@
 package com.example.cryptocurrencyviewer.data
 
+import com.example.cryptocurrencyviewer.data.api.CryptoApiService
+import com.example.cryptocurrencyviewer.data.api.CryptoResponse
 import com.example.cryptocurrencyviewer.domain.CryptoItem
 import com.example.cryptocurrencyviewer.domain.CryptoRepository
 import java.text.SimpleDateFormat
