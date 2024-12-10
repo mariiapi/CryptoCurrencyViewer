@@ -57,15 +57,14 @@ class MainActivity : AppCompatActivity(), OnCryptoItemClickListener {
     }
 
     override fun onClick(cryptoItem: CryptoItem) {
-        val detailsFragment = DetailsFragment.newInstance(cryptoItem)
         if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView, detailsFragment)
+                .replace(R.id.fragmentContainerView, DetailsFragment())
                 .addToBackStack(null)
                 .commit()
         } else {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment1, detailsFragment)
+                .replace(R.id.fragment1, DetailsFragment())
                 .commit()
         }
     }
