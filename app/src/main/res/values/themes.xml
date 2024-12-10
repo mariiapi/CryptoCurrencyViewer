@@ -1,10 +1,9 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.CryptoCurrencyViewer" parent="Theme.Material3.Dark.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:statusBarColor">@color/status_bar_color</item>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CryptoCurrencyViewer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
     </style>
-
-    <style name="Theme.CryptoCurrencyViewer" parent="Base.Theme.CryptoCurrencyViewer" />
 </resources>
