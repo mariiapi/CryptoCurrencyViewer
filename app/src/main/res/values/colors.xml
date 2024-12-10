@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#cfd3ca</color>
-    <color name="card_color">#8c27f1</color>
+    <color name="background">#0D0F0D</color>
+    <color name="card_color">#313DEB</color>
+    <color name="status_bar_color">#1C2187</color>
 </resources>

@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CCY1/CCY2"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/text_size"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
@@ -42,7 +42,7 @@
                         android:layout_height="wrap_content"
                         android:text="Coin price:"
                         android:textSize="@dimen/little_text_size"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textAlignment="textEnd"
                         />
 
@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:text="00.00"
                         android:textSize="@dimen/little_text_size"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:layout_marginStart="8dp"
                         android:textAlignment="center" />
             </TableRow>
@@ -63,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Min 24 hours:"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/little_text_size"
                         android:textAlignment="textEnd" />
 
@@ -84,7 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Max 24 hours:"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/little_text_size"
                         android:textAlignment="textEnd" />
 
@@ -105,7 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Last update:"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/little_text_size"
                         android:textAlignment="textEnd" />
 
@@ -113,7 +113,7 @@
                         android:id="@+id/lastUpdate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:text="00:00:00"
                         android:textSize="@dimen/little_text_size"
                         android:layout_marginStart="8dp"
